@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.StateDDPage;
 import utils.TestBase;
 
 import java.util.ArrayList;
@@ -16,11 +15,6 @@ import java.util.logging.Logger;
 public class DropDownTests extends TestBase {
 
     static Logger log = Logger.getLogger(String.valueOf(DropDownTests.class));
-    StateDDPage dropDownPage = new StateDDPage(driver);
-
-    private final int NUMBER_OF_VALUES_FROM_OLD_SELECT_MENU = 11;
-    private final String CAR_TYPE_AUDI = "Audi";
-
 
     /*
            1. Navigate to the Tools QA site -> https://demoqa.com/select-menu
@@ -33,6 +27,7 @@ public class DropDownTests extends TestBase {
            7. Assert false that the new list does not contain Audi.
     Note: use enum, page objects and add assert for each point.
     */
+
     @Test
     public void verifyIfTheDDsAreWorkingAsExpected() {
         driver.get("https://demoqa.com/select-menu");
@@ -41,6 +36,7 @@ public class DropDownTests extends TestBase {
         WebElement oldSelectMenuElement = driver.findElement(By.id("oldSelectMenu"));
         Select oldSelectMenuDD = new Select(oldSelectMenuElement);
 
+        int NUMBER_OF_VALUES_FROM_OLD_SELECT_MENU = 11;
         Assert.assertEquals("The number is wrong", NUMBER_OF_VALUES_FROM_OLD_SELECT_MENU, String.valueOf(oldSelectMenuDD.getOptions().size()));
 
         log.info("Assert that the default value for Old Style Select Menu is Red.");
@@ -64,6 +60,7 @@ public class DropDownTests extends TestBase {
 
         List<String> listOfCarsExceptAudi = new ArrayList<>();
 
+        String CAR_TYPE_AUDI = "Audi";
         for (WebElement carValue : carsDD.getOptions()) {
             if (!carValue.getText().equals(CAR_TYPE_AUDI)) {
                 listOfCarsExceptAudi.add(carValue.getText());

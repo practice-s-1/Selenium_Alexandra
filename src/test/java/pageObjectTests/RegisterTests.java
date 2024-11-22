@@ -1,7 +1,7 @@
 package pageObjectTests;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pageObjects.RegisterPage;
 import utils.TestBase;
 
@@ -13,7 +13,6 @@ public class RegisterTests extends TestBase {
     static Logger log = Logger.getLogger(String.valueOf(RegisterTests.class));
 
     @Test
-
     public void registerWithAllRequiredFieldsCompleted() {
         driver.get("https://testare-manuala.locdejoacapentruitsti.com/blog/register/");
 
@@ -26,9 +25,7 @@ public class RegisterTests extends TestBase {
         RegisterPage registerPage1 = new RegisterPage(driver);
 
         log.info("Verifying the success message");
-        //log.info(registerPage.getUserName());
+
         Assert.assertEquals("The account has not been successfully created!", "The account Ioana11121 has been successfully created!", registerPage.getSuccessMessage());
-
-
     }
 }

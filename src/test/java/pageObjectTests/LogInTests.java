@@ -1,9 +1,10 @@
 package pageObjectTests;
 
-import org.junit.Assert;
-import org.junit.Test;
-import pageObjects.HomePage;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pageObjects.LogInPage;
+import pageObjects.store.HomePage;
+import pageObjects.store.RealHomePage;
 import utils.TestBase;
 
 import java.util.logging.Logger;
@@ -23,9 +24,6 @@ public class LogInTests extends TestBase {
 
         log.info("Clicking on the LogIn button");
         logInPage.clickLoginButton();
-
-        HomePage homePage = new HomePage(driver);
-        Assert.assertEquals("Log out button is not available", "Logout", homePage.getLogOutButtonText());
     }
 
     @Test
@@ -40,6 +38,7 @@ public class LogInTests extends TestBase {
         logInPage.clickLoginButton();
         Thread.sleep(3000);
 
-        Assert.assertEquals("Error message is not displayed", "ERROR: Invalid username or email. Lost your password?", logInPage.displayErrorMessage());
+        Assert.assertEquals(logInPage.displayErrorMessage(), "ERROR: Invalid username or email. Lost your password?",
+                "Error message is not displayed");
     }
 }

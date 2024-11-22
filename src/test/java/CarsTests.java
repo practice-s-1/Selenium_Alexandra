@@ -12,16 +12,16 @@ import java.util.List;
 public class CarsTests extends TestBase {
 
     /**
-     1. Navigate to the Tools QA site -> https://demoqa.com/select-menu
-     2. Assert that the Old Style Select Menu contains 11 values.
-
-     3. Assert that the default value for Old Style Select Menu is Red.
-     4. Assert that the Old Style Select Menu contains the White and Black value.
-     ---- Create a new list and store these two values. Make assert on size.
-
-     5. Retrieve from the Standard multi select DD all the cars except the Audi one.
-     6. Assert that the list doesn't contain the Audi car, the size should be 3.
-     Note: use enum and add assert for each point.
+     * 1. Navigate to the Tools QA site -> https://demoqa.com/select-menu
+     * 2. Assert that the Old Style Select Menu contains 11 values.
+     * <p>
+     * 3. Assert that the default value for Old Style Select Menu is Red.
+     * 4. Assert that the Old Style Select Menu contains the White and Black value.
+     * ---- Create a new list and store these two values. Make assert on size.
+     * <p>
+     * 5. Retrieve from the Standard multi select DD all the cars except the Audi one.
+     * 6. Assert that the list doesn't contain the Audi car, the size should be 3.
+     * Note: use enum and add assert for each point.
      */
 
     @Test
@@ -33,10 +33,10 @@ public class CarsTests extends TestBase {
         WebElement oldSelectMenuElement = driver.findElement(By.id("oldSelectMenu"));
         Select oldSelectMenuDD = new Select(oldSelectMenuElement);
 
-        Assert.assertEquals(11, oldSelectMenuDD.getOptions().size());
+        Assert.assertEquals(oldSelectMenuDD.getOptions().size(), 11);
 
         // 3. Assert that the default value for Old Style Select Menu is Red.
-        Assert.assertEquals("The default color is not red!", "Red", oldSelectMenuDD.getFirstSelectedOption().getText());
+        Assert.assertEquals(oldSelectMenuDD.getFirstSelectedOption().getText(), "Red", "The default color is not red!");
 
         // 4. Assert that the Old Style Select Menu contains the White and Black value.
         List<WebElement> allColors = oldSelectMenuDD.getOptions();
@@ -47,7 +47,7 @@ public class CarsTests extends TestBase {
                 selectedColors.add(currentColor.getText());
             }
         }
-        Assert.assertEquals(2, selectedColors.size());
+        Assert.assertEquals(selectedColors.size(), 2);
 
         //  5. Retrieve from the Standard multi select DD all the cars except the Audi one.
         WebElement carsDDElement = driver.findElement(By.name("cars"));
@@ -63,7 +63,7 @@ public class CarsTests extends TestBase {
         }
 
         // 6. Assert that the list doesn't contain the Audi car, the size should be 3.
-        Assert.assertEquals(3, listOfCarsExceptAudi.size());
+        Assert.assertEquals(listOfCarsExceptAudi.size(), 3);
         Assert.assertFalse(listOfCarsExceptAudi.contains("Audi"));
     }
 }

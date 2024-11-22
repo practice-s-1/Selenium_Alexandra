@@ -1,13 +1,14 @@
-import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import utils.TestBase;
 
 import java.time.Duration;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class InterrogationTests extends TestBase {
@@ -100,11 +101,11 @@ public class InterrogationTests extends TestBase {
         Thread.sleep(3000);
         log.info("Asserting that the notification form is displayed");
         WebElement notificationForm = driver.findElement(By.id("signinnewForm"));
-        Assert.assertTrue("The notification form is not displayed", notificationForm.isDisplayed());
+        Assert.assertTrue(notificationForm.isDisplayed(), "The notification form is not displayed");
 
         Thread.sleep(3000);
         WebElement expectedText = driver.findElement(By.xpath("//*[contains(text(), 'We will send you an')]"));
-        Assert.assertTrue("The expected text is not found in the notification form", expectedText.isDisplayed());
+        Assert.assertTrue(expectedText.isDisplayed(), "The expected text is not found in the notification form");
 
     }
 
@@ -118,7 +119,7 @@ public class InterrogationTests extends TestBase {
 
         log.info("Asserting that logo element is displayed on every page");
         WebElement logoElement = driver.findElement(By.id("DeskLogo"));
-        Assert.assertTrue("The logo element is not displayed", logoElement.isDisplayed());
+        Assert.assertTrue(logoElement.isDisplayed(), "The logo element is not displayed");
     }
 
     @Test
@@ -132,7 +133,7 @@ public class InterrogationTests extends TestBase {
         log.info("Asserting that first page title is 'Online Shopping Site - Shop Men & Women Fashion Online in India'");
         String actualTitle = driver.getTitle();
 
-        if (actualTitle.equals("Online Shopping Site - Shop Men & Women Fashion Online in India")) {
+        if (Objects.equals(actualTitle, "Online Shopping Site - Shop Men & Women Fashion Online in India")) {
             log.info("Test passed");
         } else {
             log.info("Test failed");

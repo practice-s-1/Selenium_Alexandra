@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression Store Suite" parallel="false">
+    <test name="Regression Store Tests">
+        <classes>
+            <!-- Add the fully qualified names of your test classes -->
+            <class name="pageObjectTests.store.EndToEndTest"/>
+            <class name="pageObjectTests.store.NewTabTest"/>
+            <class name="pageObjectTests.store.CheckOrderTest"/>
+            <class name="pageObjectTests.store.ContactUsTest"/>
+        </classes>
+    </test>
+</suite>

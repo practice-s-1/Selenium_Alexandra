@@ -4,8 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.PageBase;
 
-public class LogInPage extends PageBase{
+public class LogInPage extends PageBase {
     // Page Factory
 
     @FindBy(xpath="//*[@id='user_login']")

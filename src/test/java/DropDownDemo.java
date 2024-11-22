@@ -1,8 +1,8 @@
-import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import utils.TestBase;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class DropDownDemo extends TestBase {
             }
         }
 
-        Assert.assertTrue("Romania is not part of the list", isRomaniaInList);
+        Assert.assertTrue(isRomaniaInList, "Romania is not part of the list");
 
         log.info("Asserting that the last option of the list is Zimbabwe");
         //int lastIndex = dropDownOptions.size()-1;
@@ -51,7 +51,7 @@ public class DropDownDemo extends TestBase {
     }
 
     @Test
-    public void multipleDropDownDemo(){
+    public void multipleDropDownDemo() {
         driver.get("https://output.jsbin.com/osebed/2");
         WebElement dropDownFruitsElement = driver.findElement(By.id("fruits"));
 
@@ -61,11 +61,11 @@ public class DropDownDemo extends TestBase {
         fruitsDD.selectByIndex(1);
         List<WebElement> selectedFruits = fruitsDD.getAllSelectedOptions();
 
-        for(WebElement fruit : selectedFruits) {
+        for (WebElement fruit : selectedFruits) {
             log.info("The selected fruit is " + fruit.getText());
         }
 
-        Assert.assertEquals("Apple", selectedFruits.get(1).getText());
+        Assert.assertEquals(selectedFruits.get(1).getText(), "Apple");
 
         log.info("Select all fruits from the list and assert that the list size si 4");
         fruitsDD.deselectAll();

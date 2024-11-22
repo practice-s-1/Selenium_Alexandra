@@ -15,10 +15,10 @@ public class ContactTests extends TestBase {
     ContactPage contactPage = new ContactPage(driver);
     static Logger log = Logger.getLogger(String.valueOf(ContactTests.class));
 
-    private final String ERROR_MESSAGE = "There was an error trying to send your message. Please try again later.";
-
     @Test
     public void checkErrorMessageDisplayedAfterAllFieldsAreCompleted() throws InterruptedException {
+        String ERROR_MESSAGE = "There was an error trying to send your message. Please try again later.";
+
         driver.get("https://testare-manuala.locdejoacapentruitsti.com/blog/contact/");
         WebElement topicElement = driver.findElement(By.xpath("//*[@name='Select']"));
         Select selectTopicDropDown = new Select(topicElement);

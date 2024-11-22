@@ -29,21 +29,20 @@ public class StateListTests extends TestBase {
 
         dropDownPage.clickContinueButton();
 
-        Assert.assertEquals("", "CREATE ACCOUNT", dropDownPage.getTitlePage());
+        Assert.assertEquals(dropDownPage.getTitlePage(), "CREATE ACCOUNT", "");
 
 
-
-        Assert.assertEquals("The default value is wrong", "--- Please Select ---",
-                dropDownPage.getSelectedOption());
+        Assert.assertEquals(dropDownPage.getSelectedOption(), "--- Please Select ---",
+                "The default value is wrong");
 
         System.out.println("The list is: " + dropDownPage.getTheListWithStatesStartingWithA());
-        Assert.assertEquals(5, dropDownPage.getTheListWithStatesStartingWithA().size());
+        Assert.assertEquals(dropDownPage.getTheListWithStatesStartingWithA().size(), 5);
 
         dropDownPage.selectDropdownOption("Bristol");
-        Assert.assertEquals("", "Bristol", dropDownPage.getSelectedOption());
+        Assert.assertEquals(dropDownPage.getSelectedOption(), "Bristol", "");
 
         System.out.println("The last state is: " + dropDownPage.getTheLastStateFromTheList());
-        Assert.assertEquals("", "Wrexham", dropDownPage.getTheLastStateFromTheList());
+        Assert.assertEquals(dropDownPage.getTheLastStateFromTheList(), "Wrexham", "");
     }
 
     private void doTheScroll() {

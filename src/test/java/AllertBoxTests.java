@@ -22,7 +22,7 @@ public class AllertBoxTests extends TestBase {
         Alert alertPopUp = driver.switchTo().alert(); //Obiect de tip Alert
         String actualMessage = alertPopUp.getText();
         String expectedMessage = "This is a simple alert box! \n" + "You can't escape from me until you click 'OK'!";
-        Assert.assertEquals("The text inside popup is wrong", expectedMessage, actualMessage);
+        Assert.assertEquals(actualMessage, expectedMessage, "The text inside popup is wrong");
 
         alertPopUp.accept(); // obiectul de tip Alert
     }
@@ -39,14 +39,14 @@ public class AllertBoxTests extends TestBase {
         Alert confirmPopUp = driver.switchTo().alert();
         String actualMessage = confirmPopUp.getText();
         String expectedMessage = "Click 'OK' or 'Cancel'.";
-        Assert.assertEquals("The text inside popup is wrong", expectedMessage, actualMessage);
+        Assert.assertEquals(actualMessage, expectedMessage, "The text inside popup is wrong");
         confirmPopUp.accept();
 
 
         confirmButton.click();
         Alert confirmPopUpButton = driver.switchTo().alert();
         actualMessage = confirmPopUpButton.getText();
-        Assert.assertEquals("The text inside popup is wrong", expectedMessage, actualMessage);
+        Assert.assertEquals(actualMessage, expectedMessage, "The text inside popup is wrong");
         confirmPopUpButton.dismiss();
     }
 
@@ -59,11 +59,9 @@ public class AllertBoxTests extends TestBase {
         Alert promptPopUp = driver.switchTo().alert();
         String actualMessage = promptPopUp.getText();
         String expectedMessage = "Which Selenium Tool do you like the most?";
-        Assert.assertEquals("The text inside popup is wrong", expectedMessage, actualMessage);
+        Assert.assertEquals(actualMessage, expectedMessage, "The text inside popup is wrong");
 
         promptPopUp.sendKeys("William Shakespeare\t");
         promptPopUp.accept();
-
     }
-
 }

@@ -18,9 +18,7 @@ public class LogInTests extends TestBase {
         driver.get("https://testare-manuala.locdejoacapentruitsti.com/blog/login/");
 
         log.info("Entering the valid credentials");
-
-        logInPage.enterUserName("IoanaBulgariu");
-        logInPage.enterPassword("Test1234");
+        logInPage.addCredentials("alexandra.hubencu2", "Alexandra123");
 
         log.info("Clicking on the LogIn button");
         logInPage.clickLoginButton();
@@ -33,8 +31,7 @@ public class LogInTests extends TestBase {
 
         log.info("Entering invalid credentials");
 
-        logInPage.enterUserName("$%^$325");
-        logInPage.enterPassword("1234");
+        logInPage.addCredentials("alexandra.hubencu", "123");
         logInPage.clickLoginButton();
         Thread.sleep(3000);
 

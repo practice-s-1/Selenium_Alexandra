@@ -9,16 +9,16 @@ import utils.PageBase;
 public class LogInPage extends PageBase {
     // Page Factory
 
-    @FindBy(xpath="//*[@id='user_login']")
+    @FindBy(xpath = "//*[@id='user_login']")
     WebElement textBoxUserName;
 
-    @FindBy(xpath="//*[@id='user_pass']")
+    @FindBy(xpath = "//*[@id='user_pass']")
     WebElement textBoxPassword;
 
-    @FindBy(id="wppb-submit")
+    @FindBy(id = "wppb-submit")
     WebElement logInButton;
 
-    @FindBy(xpath="//*[@class='wppb-error']")
+    @FindBy(xpath = "//*[@class='wppb-error']")
     WebElement errorMessage;
 
     public LogInPage(WebDriver driver) {
@@ -27,11 +27,8 @@ public class LogInPage extends PageBase {
 
     }
 
-    public void enterUserName(String userNameValue) {
-        textBoxUserName.sendKeys(userNameValue);
-    }
-
-    public void enterPassword(String passwordValue) {
+    public void addCredentials(String usernameValue, String passwordValue) {
+        textBoxUserName.sendKeys(usernameValue);
         textBoxPassword.sendKeys(passwordValue);
     }
 
@@ -39,7 +36,7 @@ public class LogInPage extends PageBase {
         logInButton.click();
     }
 
-    public String displayErrorMessage(){
+    public String displayErrorMessage() {
         return errorMessage.getText();
     }
 
